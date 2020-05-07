@@ -4,7 +4,23 @@ const server = express();
 
 server.use(express.json());
 
-let users =[];
+let users =[
+    {
+        name:'Bob',
+        bio:'I am Bob',
+        id:1
+    },
+    {
+        name:'Bill',
+        bio:'I am Bill',
+        id:2
+    },
+    {
+        name:'Horace',
+        bio:'I am Horace',
+        id:3
+    }
+];
 
 server.get('/', (req, res)=>{
     res.json({message:'hello'});
