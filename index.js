@@ -4,7 +4,7 @@ const server = express();
 
 server.use(express.json());
 
-const users =[];
+let users =[];
 
 server.get('/', (req, res)=>{
     res.json({message:'hello'});
@@ -49,7 +49,7 @@ server.get('/api/users/:id', (req, res)=>{
 
 server.delete('/api/users/:id', (req, res)=>{
     const {id} = req.params;
-    const found = users.find(user => user.id === id);
+    let found = users.find(user => user.id === id);
     if(found) {
         users = users.filter(user => user.id !== id);
         res.status(200).json(found);
@@ -61,7 +61,7 @@ server.delete('/api/users/:id', (req, res)=>{
 server.patch('/api/users/:id', (req, res)=>{
     const {id} = req.params;
     const changes = req.body;
-    let found = users.find(user => user.id === id);
+    const found = users.find(user => user.id === id);
 
     if(found) {
         Object.assign(found, changes);
